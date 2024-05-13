@@ -8,12 +8,15 @@ import asyncio
 import logging
 from aiogram import F
 from dotenv import load_dotenv
+from aiogram.client.session.aiohttp import AiohttpSession
+
 
 load_dotenv()
 
 logging.basicConfig(level=logging.INFO)
 # Объект бота
-bot = Bot(token=bot_token)
+session = AiohttpSession(proxy="http://proxy.server:3128/")
+bot = Bot(token=bot_token, session=session)
 # Диспетчер
 dp = Dispatcher()
 
